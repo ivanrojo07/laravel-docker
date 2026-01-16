@@ -36,3 +36,6 @@ EXPOSE 9000
 # 🟢 Este comando asegura que las carpetas existen y tienen permisos correctos
 # antes de iniciar PHP-FPM. Evita errores de "Permission denied" o "No such file".
 CMD ["bash", "-c", "mkdir -p storage bootstrap/cache && chown -R www-data:www-data storage bootstrap/cache && chmod -R 777 storage bootstrap/cache && php-fpm"]
+
+# Asegura permisos antes de iniciar
+CMD ["bash", "-c", "mkdir -p storage bootstrap/cache && chown -R www-data:www-data storage bootstrap/cache && chmod -R 777 storage bootstrap/cache && php-fpm"]
