@@ -4,6 +4,7 @@ import AppLayout from '../../Layouts/AppLayout.vue';
 import ModalConfirm from '../../Components/ModalConfirm.vue';
 import { Link } from '@inertiajs/vue3';
 import { router } from '@inertiajs/vue3';
+import Pagination from '../../Components/Pagination.vue';
 
 const props = defineProps({
     sellers: Object,
@@ -81,26 +82,7 @@ const handleDelete = () => {
                     </tbody>
                 </table>
             </div>
-            <div v-if="props.sellers?.links" class="mt-6">
-                <nav class="flex justify-center space-x-1">
-                    <template v-for="(link, k) in props.sellers.links" :key="k">
-                        <span 
-                            v-if="link.url === null" 
-                            v-html="link.label" 
-                            class="px-4 py-2 border rounded text-gray-400 bg-gray-50 cursor-default"
-                        ></span>
-                        
-                        <Link 
-                            v-else
-                            :href="link.url" 
-                            v-html="link.label"
-                            :class="{ 'bg-indigo-600 text-white border-indigo-600': link.active, 'bg-white text-gray-700 hover:bg-gray-50': !link.active }"
-                            class="px-4 py-2 border rounded transition-colors duration-200"
-                        />
-                        
-                    </template>
-                </nav>
-            </div>
+            <Pagination :links="props.sellers.links" />
         </div>
     </AppLayout>
 </template>
