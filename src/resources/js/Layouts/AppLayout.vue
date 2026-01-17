@@ -3,7 +3,6 @@ import { Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 
 const page = usePage();
-// Obtenemos el usuario de los datos compartidos
 const user = computed(() => page.props.auth.user);
 </script>
 
@@ -12,6 +11,13 @@ const user = computed(() => page.props.auth.user);
     <header class="bg-gray-800 text-white p-4 shadow-md">
       <nav class="container mx-auto flex justify-between items-center">
         <Link href="/" class="text-xl font-bold">Rapid Auto</Link>
+        
+        <div class="space-x-2">
+          <template v-if="user">
+            <Link href="/lotes" class="hover:underline">Lotes</Link>
+            <Link href="/seller" class="hover:underline">Vendedores</Link>
+          </template>
+        </div>
         
         <div class="space-x-4">
           <template v-if="!user">

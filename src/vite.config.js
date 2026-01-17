@@ -5,19 +5,22 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
 export default defineConfig({
+    server: {
+        host: '0.0.0.0', // Escucha en todas las IPs del contenedor
+        port: 5173,
+        strictPort: true,
+        hmr: {
+            host: 'localhost', // El navegador buscará el socket en tu máquina real
+        },
+        watch: {
+            usePolling: true, // Fuerza a Vite a revisar cambios manualmente
+            interval: 100,    // Cada 100ms
+        },
+    },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './resources/js'),
         },
-    },
-    server: {
-        host: '0.0.0.0',
-        hmr: {
-            host: 'localhost',
-        },
-    },
-    watch: {
-        usePolling: true,
     },
     plugins: [
         laravel({
