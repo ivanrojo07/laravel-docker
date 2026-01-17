@@ -14,7 +14,7 @@ const user = computed(() => page.props.auth.user);
         
         <div class="space-x-2">
           <template v-if="user">
-            <Link href="/lotes" class="hover:underline">Lotes</Link>
+            <Link href="/lote" class="hover:underline">Lotes</Link>
             <Link href="/seller" class="hover:underline">Vendedores</Link>
           </template>
         </div>

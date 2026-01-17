@@ -14,7 +14,7 @@ export default defineConfig({
         },
         watch: {
             usePolling: true, // Fuerza a Vite a revisar cambios manualmente
-            interval: 100,    // Cada 100ms
+            interval: 10,    // Cada 100ms
         },
     },
     resolve: {

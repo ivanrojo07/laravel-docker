@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lote;
 use App\Models\Seller;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class SellerController extends Controller
 {
@@ -13,6 +15,8 @@ class SellerController extends Controller
     public function index()
     {
         //
+        $sellers = Seller::paginate(10);
+        return Inertia::render('Seller/Index',compact('sellers'));
     }
 
     /**
@@ -21,6 +25,8 @@ class SellerController extends Controller
     public function create()
     {
         //
+        $lotes = Lote::all(['id','name']);
+        return Inertia::render('Seller/Import',compact('lotes'));
     }
 
     /**
@@ -29,15 +35,16 @@ class SellerController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request->all());
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Seller $seller)
-    {
-        //
-    }
+    // public function show(Seller $seller)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
